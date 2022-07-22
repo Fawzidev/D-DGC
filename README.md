@@ -1,11 +1,6 @@
 # D-DGC (Dynamic Deep Graph Clustering)
 
-## Usage
-
-We provide four models GMM-VGAE, DGAE, R-GMM-VGAE, and R-DGAE. For each dataset and each model, we provide the pretraining weights. The data is also provided with the code.   Users can perform their own pretraining if they wish. GPU(s) are not required to train the models. For instance, to run the code of R-GMM-VGAE on Cora, you should clone this repo and use the following command: 
-```
-python3 ./R-GMM-VGAE/main_cora.py
-```
+This project is a part of my master thesis in computer science.
 
 ## Built With
 The code is built with:
