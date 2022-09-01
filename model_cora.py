@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Authors : Nairouz Mrabah (mrabah.nairouz@courrier.uqam.ca) & Mohamed Fawzi Touati (touati.mohamed_fawzi@courrier.uqam.ca)
-# @Link    : github.com/nairouz/GMM_VGAE
-# @Paper   : Collaborative Graph Convolutional Networks: Unsupervised Learning Meets Semi-Supervised Learning
-# @License : MIT License
-
 import os
 import torch
 import metrics as mt

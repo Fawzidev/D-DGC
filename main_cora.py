@@ -108,21 +108,21 @@ def plot_confusion_matrix(cm, target_names, title='Matrice de confusion', cmap=N
     plt.ylabel('Label de référence')
     plt.xlabel('Label prédit \n Précision={:0.4f}; Mal classés = {:0.4f}'.format(accuracy, misclass))
     #plt.show()
-    plt.savefig("/home/mrabah_n/code/FR_DGC/results/Cora/cluster/confusion_matrix.png", dpi=400)
+    plt.savefig("/path/D_DGC/results/Cora/cluster/confusion_matrix.png", dpi=400)
 
 # Dataset Name
 dataset = "Cora"
 print("Cora dataset")
-feas = format_data('cora', '/home/mrabah_n/code/FR_DGC/data/Cora')
+feas = format_data('cora', '/path/D_DGC/data/Cora')
 num_nodes = feas['features'].size(0)
 num_features = feas['features'].size(1)
 nClusters = 7
-adj, features , labels = load_data('cora', '/home/mrabah_n/code/FR_DGC/data/Cora')
+adj, features , labels = load_data('cora', '/path/D_DGC/data/Cora')
 
 # Network parameters
 num_neurons = 32
 embedding_size = 16
-save_path = "/home/mrabah_n/code/FR_DGC/results/"
+save_path = "/path/D_DGC/results/"
 
 # Pretraining parameters
 epochs_pretrain = 200

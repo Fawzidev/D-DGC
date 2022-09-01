@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Authors : Nairouz Mrabah (mrabah.nairouz@courrier.uqam.ca) & Mohamed Fawzi Touati (touati.mohamed_fawzi@courrier.uqam.ca)
-# @Link    : github.com/nairouz/GMM_VGAE
-# @Paper   : Collaborative Graph Convolutional Networks: Unsupervised Learning Meets Semi-Supervised Learning
-# @License : MIT License
-
-
 import os
 import torch
 import metrics as mt
@@ -82,20 +74,15 @@ def generate_unconflicted_data_index(emb, centers_emb, beta1, beta2):
     q = q_mat(emb, centers_emb, alpha=1.0)
         
     confidence1 = q.max(1)
-    #print("confidence1", confidence1)
     confidence2 = np.zeros((q.shape[0],))
-    #print("confidence2", confidence2)
     
-    #print("qshape", q.shape[0])
     a = np.argsort(q, axis=1)[:,-2]
-    #print("a", a)
     for i in range(q.shape[0]):
         confidence2[i] = q[i,a[i]]
         if (confidence1[i]) > beta1 and (confidence1[i] - confidence2[i]) > beta2:
             unconf_indices.append(i)
         else:
             conf_indices.append(i)
-    #print("confidence2", confidence2)
     unconf_indices = np.asarray(unconf_indices, dtype=int)
     conf_indices = np.asarray(conf_indices, dtype=int)
     return unconf_indices, conf_indices
@@ -459,7 +446,6 @@ class FR_DGC(nn.Module):
         return acc_unconf, nmi_unconf, acc_conf, nmi_conf
 
     def generate_centers(self, emb_unconf):
-        # Plus proche voisin unconflictuel de centre correspondant aux differents points unconflictuels 
         y_pred = self.predict1(emb_unconf)
         nn = NearestNeighbors(n_neighbors= 1, algorithm='ball_tree').fit(emb_unconf.detach().numpy())
         _, indices = nn.kneighbors(self.mu_c.detach().numpy())

@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Authors  : Nairouz Mrabah (mrabah.nairouz@courrier.uqam.ca) & Fawzi Touati (touati.mohamed_fawzi@courrier.uqam.ca)
-# @Link    : github.com/nairouz/GMM_VGAE
-# @Paper   : Collaborative Graph Convolutional Networks: Unsupervised Learning Meets Semi-Supervised Learning
-
-# @License : MIT License
-
 import numpy as np
 import torch
 from sklearn.metrics import normalized_mutual_info_score, adjusted_rand_score, f1_score
@@ -22,9 +14,6 @@ def cos_grad(grad1, grad2):
         grad2_list.append(grad2[i].flatten())
     grad1_vector = torch.cat(grad1_list, 0)
     grad2_vector = torch.cat(grad2_list, 0)
-    #grad1_vector = np.concatenate(grad1_list)
-    #grad2_vector = np.concatenate(grad2_list)
-    #return np.matmul(grad1_vector, grad2_vector) / ((np.linalg.norm(grad1_vector)) * (np.linalg.norm(grad2_vector)))
     return torch.dot(grad1_vector, grad2_vector) / ((torch.norm(grad1_vector)) * (torch.norm(grad2_vector)))
 
 def acc(y_true, y_pred):

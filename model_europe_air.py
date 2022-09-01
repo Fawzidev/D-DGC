@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Authors : Nairouz Mrabah (mrabah.nairouz@courrier.uqam.ca) & Mohamed Fawzi Touati (touati.mohamed_fawzi@courrier.uqam.ca)
-# @Link    : github.com/nairouz/GMM_VGAE
-# @Paper   : Collaborative Graph Convolutional Networks: Unsupervised Learning Meets Semi-Supervised Learning
-# @License : MIT License
-
-
 import os
 import torch
 import metrics as mt
@@ -450,7 +442,6 @@ class FR_DGC(nn.Module):
         return acc_unconf, nmi_unconf, acc_conf, nmi_conf
 
     def generate_centers(self, emb_unconf):
-        # Plus proche voisin unconflictuel de centre correspondant aux differents points unconflictuels 
         y_pred = self.predict1(emb_unconf)
         nn = NearestNeighbors(n_neighbors= 1, algorithm='ball_tree').fit(emb_unconf.detach().numpy())
         _, indices = nn.kneighbors(self.mu_c.detach().numpy())

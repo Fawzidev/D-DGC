@@ -451,7 +451,6 @@ class FR_DGC(nn.Module):
         return acc_unconf, nmi_unconf, acc_conf, nmi_conf
 
     def generate_centers(self, emb_unconf):
-        # Plus proche voisin unconflictuel de centre correspondant aux differents points unconflictuels 
         y_pred = self.predict1(emb_unconf)
         nn = NearestNeighbors(n_neighbors= 1, algorithm='ball_tree').fit(emb_unconf.detach().numpy())
         _, indices = nn.kneighbors(self.mu_c.detach().numpy())

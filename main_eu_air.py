@@ -22,7 +22,7 @@ from sklearn.metrics import confusion_matrix
 dataset = "europe"
 print("Europe dataset")
 nClusters = 4
-adj, features , labels = load_data_networks('europe', '/home/mrabah_n/code/FR_DGC/data/Airports/')
+adj, features , labels = load_data_networks('europe', '/path/D_DGC/data/Airports/')
 num_nodes = features.shape[1]
 num_features = features.shape[0]
 
@@ -32,7 +32,7 @@ print(num_features)
 # Network parameters
 num_neurons = 32
 embedding_size = 16
-save_path = "/home/mrabah_n/code/FR_DGC/results/"
+save_path = "/path/D_DGC/results/"
 
 # Pretraining parameters
 epochs_pretrain = 200
@@ -79,5 +79,4 @@ weight_tensor_orig[weight_mask_orig] = pos_weight_orig
 
 acc_array = []
 network = FR_DGC(adj = adj_norm , num_neurons=num_neurons, num_features=num_features, embedding_size=embedding_size, nClusters=nClusters, activation="ReLU")
-#acc_array = network.pretrain(adj_norm, features, adj_label_orig, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_pretrain, lr=lr_pretrain, save_path=save_path, dataset=dataset)
 acc_array, y_pred, y = network.train(acc_array, adj_norm, features, adj_label_orig, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_cluster, lr=lr_cluster, beta1=beta1, beta2=beta2, save_path=save_path, dataset=dataset)
